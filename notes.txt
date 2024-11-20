@@ -1,0 +1,26 @@
+#lang racket
+
+(define (contar-elementos lista)
+  (if (null? lista)   ; Si la lista está vacía, devolver 0
+      0
+      (+ 1 (contar-elementos (cdr lista)))
+  )
+) 
+
+#lang racket
+
+(define (contador vector numero pos total)
+    (if (= pos (vector-length vector))
+        total
+        (contador vector numero (+ pos 1)
+                  (if (= (vector-ref vector pos) numero)
+                      (+ total 1)
+                      total)
+        )
+    )
+)
+
+(define (contar-ocurrencias vector numero)
+  (contador vector numero 0 0)
+)
+
